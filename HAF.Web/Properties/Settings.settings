@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="HAF.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="JwtIssuer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SimpleDmsDevSystem</Value>
+    </Setting>
+    <Setting Name="JwtAudience" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SimpleDmsDevelopers</Value>
+    </Setting>
+    <Setting Name="RequiresSsl" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CrowdGroupsPrefix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Hahn.ApplicationProcess.Application</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
