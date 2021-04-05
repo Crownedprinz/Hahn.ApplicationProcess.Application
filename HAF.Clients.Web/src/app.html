@@ -1,20 +1,20 @@
 
-  <template>
-    <h1>${heading}</h1>
-    <form submit.trigger="addTodo()">
-      <input type="text" value.bind="todoDescription">
-      <button type="submit" disabled.bind="!todoDescription">Add Todo</button>
-    </form>
-    <ul>
-      <li repeat.for="todo of todos">
-        <input type="checkbox" checked.bind="todo.done">
-        <span css="text-decoration: ${todo.done ? 'line-through' : 'none'}">
-          ${todo.description}
-        </span>
-        <button click.trigger="removeTodo(todo)">Remove</button>
-      </li>
-    </ul>
-  </template>
-  
+
+<template>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <require from="./styles/reset.css"></require>
+  <require from="./styles/app.css"></require>
+  <div class="cover">
+    <div class="cover-center">
+      <h1>Welcome!</h1>
+      <p>This is a CRUD tutorial using <em>Aurelia</em> framework</p>
+      <p>To read more access the <a href="#">post</a>, or the <a href="https://github.com/Crownedprinz/Hahn.ApplicationProcess.Application">GitHub</a> repository.</p>
+      <div class="container">
+        <router-view class="col-md-8"></router-view>
+      </div>
+      <footer>made by <a href="#">john ademola</a></footer>
+    </div>
+  </div>
+</template>
 
   

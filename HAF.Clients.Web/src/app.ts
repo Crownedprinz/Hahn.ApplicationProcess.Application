@@ -1,30 +1,36 @@
+import { Aurelia, PLATFORM } from "aurelia-framework";
+import { Router, RouterConfiguration } from "aurelia-router";
+
 export class App {
-    heading: string;
-    todos: any[];
-    todoDescription: string;
-    constructor() {
-      this.heading = "Todos";
-      this.todos = [];
-      this.todoDescription = "";
-    }
+  router: Router | undefined;
 
-    addTodo() {
-      if (this.todoDescription) {
-        this.todos.push({
-          description: this.todoDescription,
-          done: false,
-        });
-        this.todoDescription = "";
-      }
-    }
+  configureRouter(config: RouterConfiguration, router: Router) {
+    config.title = "Aurelia CRUD";
+    config.map([
+      {
+        route: ["", "home"],
+        name: "home",
+        moduleId: PLATFORM.moduleName("./home/home"),
+        title: "Home",
+      },
+      {
+        route: "assets-list",
+        name: "assets",
+        moduleId: PLATFORM.moduleName("./assets/assets"),
+        title: "Asset List",
+      },
+      {
+        route: "assets-list/:id",
+        name: "AssetDetail",
+        moduleId: PLATFORM.moduleName("./assets/AssetDetail"),
+      },
+      {
+        route: "assets-list/create",
+        name: "AssetCreate",
+        moduleId: PLATFORM.moduleName("./assets/AssetCreate"),
+      },
+    ]);
 
-    removeTodo(todo) {
-      let index = this.todos.indexOf(todo);
-      if (index !== -1) {
-        this.todos.splice(index, 1);
-      }
-    }
+    this.router = router;
   }
-  
-
-  
+}

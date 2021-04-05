@@ -23,6 +23,9 @@
     "src",
     "test"
   ],
+  "exclude": [
+    "node_modules"
+  ],
   "atom": {
     "rewriteTsconfig": false
   }

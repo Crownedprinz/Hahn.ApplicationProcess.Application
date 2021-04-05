@@ -1,6 +1,9 @@
 import {Aurelia} from 'aurelia-framework';
-import * as environment from '../config/environment.json';
+import environment from "./environment";
 import {PLATFORM} from 'aurelia-pal';
+import * as Bluebird from "bluebird";
+
+Bluebird.config({ warnings: { wForgottenReturn: false } });
 
 export function configure(aurelia: Aurelia): void {
   aurelia.use

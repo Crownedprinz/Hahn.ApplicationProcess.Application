@@ -1,0 +1,41 @@
+<template>
+  <require from="../styles/assets.css"></require>
+  <require from="../styles/assetdetail.css"></require>
+  <div class="assets">
+    <h2>Profile</h2>
+    <form role="form" class="assets-form">
+      <div class="assets-form-item">
+        <label>First Name
+          <input type="text" placeholder="first name" value.bind="activeAsset.firstName">
+        </label>
+      </div>
+
+      <div class="assets-form-item">
+        <label>Last Name
+          <input type="text" placeholder="last name" value.bind="activeAsset.lastName">
+        </label>
+      </div>
+
+      <div class="assets-form-item">
+        <label>Email
+          <input type="text" placeholder="email" value.bind="activeAsset.email">
+        </label>
+      </div>
+
+      <div class="assets-form-item">
+        <label>Phone Number
+          <input type="text" placeholder="phone number" value.bind="activeAsset.phoneNumber">
+        </label>
+      </div>
+    </form>
+    <div class="assets-button">
+        <button click.delegate="save()" disabled.bind="!canSave" class="assets-save">
+          <i class="fas fa-save"></i>
+          Save
+        </button>
+        <a class="assets-cancel" href="#" route-href="route: assets;" disabled.bind="!canSave">Cancel</a>
+    </div>
+  </div>
+
+  <a route-href="route: home;" class="assets-return"><i class="fas fa-chevron-left"></i> Home</a>
+</template>

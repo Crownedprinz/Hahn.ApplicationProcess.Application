@@ -1,0 +1,22 @@
+<template>
+  <require from="../styles/assets.css"></require>
+  <div class="assets">
+    <h2>Asset List</h2>
+    <ul class="asset-list">
+      <li repeat.for="asset of assets" class="assets-item ${asset.id === $parent.selectedId ? 'active' : ''}">
+        <h3 class="assets-item-name">${asset.firstName} ${contact.lastName}</h3>
+        <p class="assets-item-text">Email: ${asset.email}</p>
+        <p class="assets-item-text">Phone number: ${asset.phoneNumber}</p>
+        <a class="assets-item-edit" route-href="route: AssetDetail; params.bind: {id:asset.id}" click.delegate="$parent.select(asset)">
+          <i class="fas fa-edit"></i>
+          <small>Edit</small>
+        </a>
+        <a click.delegate="$parent.remove(asset)" href="#" class="assets-item-remove">
+          <i class="fas fa-trash"></i>
+          <small>Remove</small>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <a route-href="route: home;" class="assets-return"><i class="fas fa-chevron-left"></i> Home</a>
+</template>
