@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using HAF.Domain;
+using HAF.Domain.CommandParameters;
 using HAF.Domain.Connectors;
 using HAF.Domain.Entities;
 using HAF.Domain.QueryParameters;
@@ -19,18 +20,24 @@ namespace HAF.Web.Controllers
     [RoutePrefix(Globals.ApiRoutesPrefix + "asset")]
     public class AssetController : ResourceApiController<Asset, Asset>
     {
-        //private readonly IQueryAll<DocumentFlag> _queryDocumentFlags;
-        //private readonly IQuery<QueryDocumentWithData, Document> _queryDocumentWithData;
-        //private readonly ICommand<UpdateDocument> _updateDocument;
+        private readonly ICommand<AddAsset> _addAsset;
+        private readonly ICommand<UpdateAsset> _updateAsset;
+        private readonly ICommand<DeleteAsset> _deleteAsset;
         private readonly IAssetService _assetService;
         public AssetController(
             IQueryAll<Asset> queryAll,
             IQuerySingle<Asset> querySingle,
-            IAssetService assetService
+            IAssetService assetService,
+            ICommand<AddAsset> addAsset,
+            ICommand<UpdateAsset> updateAsset,
+            ICommand<DeleteAsset> deleteAsset
             )
             : base(queryAll, querySingle)
         {
             _assetService = assetService;
+            _addAsset = addAsset;
+            _updateAsset = updateAsset;
+            _deleteAsset = deleteAsset;
         }
 
 
@@ -49,7 +56,7 @@ namespace HAF.Web.Controllers
             {
                 return BadRequest(validateResult.errors);
             }
-            //_addDebitorCreditor.Execute(new AddDebitorCreditor(debitorCreditor));
+            _addAsset.Execute(new AddAsset(result));
 
             return Created(result.ID.ToString(), ToResource(result));
         }
@@ -95,7 +102,7 @@ namespace HAF.Web.Controllers
             if (config.broken != asset.broken)
                 asset.broken = config.broken;
 
-            //_updateDocument.Execute(new UpdateDocument(document));
+            _updateAsset.Execute(new UpdateAsset(asset));
 
             return Ok();
         }
@@ -107,7 +114,7 @@ namespace HAF.Web.Controllers
             var asset = _querySingle.Execute(id);
             if (asset == null)
                 return NotFound();
-            //_deleteDocument.Execute(new UpdateDocument(document));
+            _deleteAsset.Execute(new DeleteAsset(asset));
 
             return Ok();
         }
