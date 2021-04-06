@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
@@ -358,10 +362,6 @@
     <ProjectReference Include="..\HAF.CompositionRoot\HAF.CompositionRoot.csproj">
       <Project>{946b0619-4e60-48dd-8fca-c642c3f929e3}</Project>
       <Name>HAF.CompositionRoot</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HAF.DAL\HAF.DAL.csproj">
-      <Project>{d9f2479c-fdb5-4ee2-8fcd-1714367ca9e6}</Project>
-      <Name>HAF.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\HAF.Domain\HAF.Domain.csproj">
       <Project>{b8aa608c-be7a-446b-9bb2-cc49d7913d2d}</Project>

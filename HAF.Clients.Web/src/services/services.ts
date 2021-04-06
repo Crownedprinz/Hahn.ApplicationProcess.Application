@@ -14,25 +14,19 @@ export class AssetService {
   }
 
   getAssets() {
-    return new Promise<any>((resolve, reject)=>{
-    this.assets = JSON.parse(
+    let promise = new Promise<any>((resolve, reject) => {
+      this.http
+        .get('')
+        .then((data) => {
+          this.assets = JSON.parse(data.response);
+          this.assets = JSON.parse(
             '[{"firstName": "John", "id":1, "lastName": "Ademola", "email":"ademolajhon@gmail.com","phoneNumber":"08134734540"}]'
           );
           resolve(this.assets);
+        })
+        .catch((err) => reject(err));
     });
-    // let promise = new Promise<any>((resolve, reject) => {
-    //   this.http
-    //     .get('')
-    //     .then((data) => {
-    //       this.assets = JSON.parse(data.response);
-    //       this.assets = JSON.parse(
-    //         '[{"firstName": "John", "id":1, "lastName": "Ademola", "email":"ademolajhon@gmail.com","phoneNumber":"08134734540"}]'
-    //       );
-    //       resolve(this.assets);
-    //     })
-    //     .catch((err) => reject(err));
-    // });
-    // return promise;
+    return promise;
   }
 
   createAsset(asset) {

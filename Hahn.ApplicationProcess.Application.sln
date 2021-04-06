@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAF.Domain", "HAF.Domain\HA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAF.CompositionRoot", "HAF.CompositionRoot\HAF.CompositionRoot.csproj", "{946B0619-4E60-48DD-8FCA-C642C3F929E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAF.DAL", "HAF.DAL\HAF.DAL.csproj", "{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAF.Web", "HAF.Web\HAF.Web.csproj", "{10D4536B-7A49-4650-8ACC-DA44068C66D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAF.DAL", "HAF.DAL\HAF.DAL.csproj", "{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,20 +25,20 @@ Global
 		{946B0619-4E60-48DD-8FCA-C642C3F929E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{946B0619-4E60-48DD-8FCA-C642C3F929E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{946B0619-4E60-48DD-8FCA-C642C3F929E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{10D4536B-7A49-4650-8ACC-DA44068C66D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{10D4536B-7A49-4650-8ACC-DA44068C66D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10D4536B-7A49-4650-8ACC-DA44068C66D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10D4536B-7A49-4650-8ACC-DA44068C66D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {93E4ECEA-CA7A-40F5-A753-92D488EABBA5}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+		SolutionGuid = {93E4ECEA-CA7A-40F5-A753-92D488EABBA5}
 	EndGlobalSection
 EndGlobal

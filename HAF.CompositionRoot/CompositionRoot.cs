@@ -25,7 +25,7 @@ namespace HAF.CompositionRoot
             container.RegisterSingleton<IValidator<Asset>, AssetValidator>();
             container.RegisterSingleton<IRecurringJobManager, NullRecurringJobManager>();
 
-            Database.SetInitializer(new DatabaseInitializer());
+            //Database.SetInitializer(new DatabaseInitializer());
         }
 
         private static void RegisterAutoMapper(this Container container, IEnumerable<Assembly> relevantAssemblies)
