@@ -6,11 +6,10 @@ using HAF.Domain;
 using HAF.Domain.CommandParameters;
 using HAF.Domain.Connectors;
 using HAF.Domain.Entities;
-using HAF.Domain.Resources;
+using HAF.Web.Resources;
 using HAF.Domain.QueryParameters;
 using HAF.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.Examples;
 
 namespace HAF.Web.Controllers
 {
@@ -37,6 +36,10 @@ namespace HAF.Web.Controllers
         }
 
         [HttpGet("{id}")]
+        /// <summary>
+        /// Retrieves a specific asset by  id
+        /// </summary>
+        /// <param name="id" example="1">The product id</param>
         public IActionResult Get(int id)
         {
             var entity = _queryAll.ExecuteOne(id);
@@ -47,12 +50,12 @@ namespace HAF.Web.Controllers
 
         
         [HttpGet]
+
         public IEnumerable<Asset> Get() => _queryAll.Execute().Select(ToResource);
 
 
 
-        [HttpPost("")]
-        [SwaggerRequestExample(typeof(AssetExample), typeof(AssetExample))]
+        [HttpPost]
         public IActionResult Add([FromBody] AddOrUpdateAssetResource resource)
         {
             var result = new Asset

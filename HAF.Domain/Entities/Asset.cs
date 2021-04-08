@@ -8,6 +8,7 @@ namespace HAF.Domain.Entities
         public DepartmentStatus? Department { get; set; }
         public string CountryOfDepartment { get; set; }
         public string EMailAdressOfDepartment { get; set; }
+       
         public DateTime? PurchaseDate { get; set; }
         public bool? broken { get; set; }
     }

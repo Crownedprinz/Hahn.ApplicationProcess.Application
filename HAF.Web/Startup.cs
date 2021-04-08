@@ -1,23 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HAF.DAL.Commands;
 using HAF.DAL.Queries;
-using HAF.Domain;
-using HAF.Domain.Entities;
 using HAF.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using HAF.Domain.QueryParameters;
 using HAF.Domain.CommandParameters;
+using Microsoft.OpenApi.Models;
+using System.IO;
+using Newtonsoft.Json.Converters;
 
 namespace HAF.Web
 {
@@ -34,7 +27,10 @@ namespace HAF.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+             options.SerializerSettings.Converters.Add(new StringEnumConverter()));
+            // order is vital, this *must* be called *after* AddNewtonsoftJson()
+            services.AddSwaggerGenNewtonsoftSupport(); ;
             services.AddScoped<IQueryAll, QueryEntities>();
             services.AddScoped<ICommand, AssetCommand>();
             services.AddScoped<IAssetService, AssetService>();
@@ -48,8 +44,11 @@ namespace HAF.Web
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HAF.Web", Version = "v1" });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "HAF.Web.xml");
+                c.IncludeXmlComments(filePath);
                 //c.DescribeAllEnumsAsStrings();
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +72,7 @@ namespace HAF.Web
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
