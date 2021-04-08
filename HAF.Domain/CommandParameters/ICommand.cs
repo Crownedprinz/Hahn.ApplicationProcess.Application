@@ -1,6 +1,6 @@
 ﻿using HAF.Domain.Entities;
 
-namespace  HAF.Domain
+namespace  HAF.Domain.CommandParameters
 {
     public interface ICommand
     {

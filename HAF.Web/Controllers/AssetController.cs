@@ -7,6 +7,8 @@ using HAF.Domain.CommandParameters;
 using HAF.Domain.Connectors;
 using HAF.Domain.Entities;
 using HAF.Domain.Resources;
+using HAF.Domain.QueryParameters;
+using HAF.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HAF.Web.Controllers

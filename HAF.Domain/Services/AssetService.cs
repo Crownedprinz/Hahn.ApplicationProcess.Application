@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using HAF.Domain.Entities;
 using HAF.Domain.Validators;
+using HAF.Domain.Services;
 
 namespace HAF.Domain.Services
 {

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HAF.Domain;
 using HAF.Domain.Entities;
+using HAF.Domain.QueryParameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace  HAF.DAL.Queries

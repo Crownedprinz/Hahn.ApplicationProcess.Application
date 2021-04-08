@@ -1,6 +1,7 @@
 ﻿using HAF.Domain;
 using HAF.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using HAF.Domain.CommandParameters;
 
 namespace  HAF.DAL.Commands
 {
