@@ -11,6 +11,8 @@ using HAF.Domain.CommandParameters;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using Newtonsoft.Json.Converters;
+using HAF.Web.Middlewares;
+using Microsoft.Extensions.Logging;
 
 namespace HAF.Web
 {
@@ -35,6 +37,7 @@ namespace HAF.Web
             services.AddScoped<ICommand, AssetCommand>();
             services.AddScoped<IAssetService, AssetService>();
             services.AddAutoMapper(typeof(Startup));
+            services.AddSingleton<ILoggerRepo, LoggerRepo>();
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -52,8 +55,12 @@ namespace HAF.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            var path = Directory.GetCurrentDirectory();
+            loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,6 +74,7 @@ namespace HAF.Web
 
             app.UseAuthorization();
             app.UseCors("MyPolicy");
+            app.UseMiddleware<Logger>();
 
             app.UseEndpoints(endpoints =>
             {

@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.1.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
 </Project>
