@@ -13,27 +13,31 @@ using System.Threading.Tasks;
 namespace HAF.Domain.Queries
 {
 
-    public class QueryAsset : QueryEntities<Asset>, IQuery<QueryAssetWithData, Asset>
+    public class QueryAsset : QueryEntities, IQuery<QueryAssetWithData, Asset>
     {
+        //public Asset Execute(QueryAssetWithData parameters)
+        //{
+        //    using (var context = new DatabaseContext())
+        //    {
+        //        var query = CreateQuery(context);
+
+        //        return query.SingleOrDefault(x => x.ID == parameters.ID);
+        //    }
+        //}
+
+        //protected override IQueryable<Asset> CreateQuery(DatabaseContext context)
+        //{
+        //    List<Asset> assets = new List<Asset>()
+        //    {
+
+
+        //    };
+        //    IQueryable<Asset> query = assets.AsQueryable();
+        //    return query;
+        //}
         public Asset Execute(QueryAssetWithData parameters)
         {
-            using (var context = new DatabaseContext())
-            {
-                var query = CreateQuery(context);
-
-                return query.SingleOrDefault(x => x.ID == parameters.ID);
-            }
-        }
-
-        protected override IQueryable<Asset> CreateQuery(DatabaseContext context)
-        {
-            List<Asset> assets = new List<Asset>()
-            {
-
-
-            };
-            IQueryable<Asset> query = assets.AsQueryable();
-            return query;
+            throw new NotImplementedException();
         }
     }
 

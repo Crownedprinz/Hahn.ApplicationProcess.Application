@@ -10,27 +10,25 @@ import { Router } from "aurelia-router";
 export class AssetCreate {
   private _assetService;
   private _ea;
-  contact = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
+  assetHold = {
+    assetName: "",
+    department: "",
+    eMailAdressOfDepartment: "",
+    countryOfDepartment: "",
+    phone: "",
+    broken: ""
   };
   router: Router;
 
-  constructor(
-    ea: EventAggregator,
-    assetService: AssetService,
-    router: Router
-  ) {
+  constructor(ea: EventAggregator, assetService: AssetService, router: Router) {
     this._assetService = assetService;
     this._ea = ea;
     this.router = router;
   }
 
   create() {
-    let asset = JSON.parse(JSON.stringify(this.asset));
-
+    let asset = JSON.parse(JSON.stringify(this.assetHold));
+    alert(JSON.stringify(this.assetHold));
     if (asset.email === "") {
       return alert("You need to add information to your contact.");
     } else {

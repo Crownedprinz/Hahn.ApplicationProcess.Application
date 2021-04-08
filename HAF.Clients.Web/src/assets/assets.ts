@@ -54,7 +54,7 @@ export class AssetList {
     if (confirm("Are you sure that you want to delete this contact?")) {
       this._assetService
         .deleteAsset(asset.id)
-        .then((reponse) => {
+        .then((response) => {
           this.ea.publish(new AssetDeleted(asset));
         })
         .catch((err) => console.log(err));

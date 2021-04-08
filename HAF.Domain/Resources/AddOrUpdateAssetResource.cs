@@ -1,9 +1,17 @@
-﻿using System;
-namespace HAF.Domain.Entities
-{
+﻿using HAF.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-    public class Asset : NamedEntity
+namespace HAF.Domain.Resources
+{
+    public class AddOrUpdateAssetResource
     {
+        /// <summary>
+        /// Asset Name
+        /// </summary>
+        /// <example>Biology Research</example>
         public string AssetName { get; set; }
         public DepartmentStatus? Department { get; set; }
         public string CountryOfDepartment { get; set; }
@@ -11,5 +19,4 @@ namespace HAF.Domain.Entities
         public DateTime? PurchaseDate { get; set; }
         public bool? broken { get; set; }
     }
-
 }

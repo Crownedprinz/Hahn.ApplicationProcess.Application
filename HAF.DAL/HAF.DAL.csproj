@@ -1,236 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D9F2479C-FDB5-4EE2-8FCD-1714367CA9E6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HAF.DAL</RootNamespace>
-    <AssemblyName>HAF.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseContext.cs" />
-    <Compile Include="DatabaseInitializer.cs" />
-    <Compile Include="ForceDropCreateDatabaseInitializer.cs" />
-    <Compile Include="Migrations\201701172227444_Initial.cs" />
-    <Compile Include="Migrations\201701172227444_Initial.Designer.cs">
-      <DependentUpon>201701172227444_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701241525354_AddFolders.cs" />
-    <Compile Include="Migrations\201701241525354_AddFolders.Designer.cs">
-      <DependentUpon>201701241525354_AddFolders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701241614029_ChangeStructure.cs" />
-    <Compile Include="Migrations\201701241614029_ChangeStructure.Designer.cs">
-      <DependentUpon>201701241614029_ChangeStructure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701251052171_AddDropscanRecipient.cs" />
-    <Compile Include="Migrations\201701251052171_AddDropscanRecipient.Designer.cs">
-      <DependentUpon>201701251052171_AddDropscanRecipient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701260732193_AddFileExtensionForContext.cs" />
-    <Compile Include="Migrations\201701260732193_AddFileExtensionForContext.Designer.cs">
-      <DependentUpon>201701260732193_AddFileExtensionForContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701260825437_AddFkPropertyAndRemoveUnnecessaryProperties.cs" />
-    <Compile Include="Migrations\201701260825437_AddFkPropertyAndRemoveUnnecessaryProperties.Designer.cs">
-      <DependentUpon>201701260825437_AddFkPropertyAndRemoveUnnecessaryProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701260847537_RenameProperty.cs" />
-    <Compile Include="Migrations\201701260847537_RenameProperty.Designer.cs">
-      <DependentUpon>201701260847537_RenameProperty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261731238_AddFlagsToDocument.cs" />
-    <Compile Include="Migrations\201701261731238_AddFlagsToDocument.Designer.cs">
-      <DependentUpon>201701261731238_AddFlagsToDocument.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261842108_ImproveFkColumnNames.cs" />
-    <Compile Include="Migrations\201701261842108_ImproveFkColumnNames.Designer.cs">
-      <DependentUpon>201701261842108_ImproveFkColumnNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261902596_FixParentFolderFk.cs" />
-    <Compile Include="Migrations\201701261902596_FixParentFolderFk.Designer.cs">
-      <DependentUpon>201701261902596_FixParentFolderFk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261906227_FixRecipientCompanyFk.cs" />
-    <Compile Include="Migrations\201701261906227_FixRecipientCompanyFk.Designer.cs">
-      <DependentUpon>201701261906227_FixRecipientCompanyFk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701270809525_AddDropscanMailingPage.cs" />
-    <Compile Include="Migrations\201701270809525_AddDropscanMailingPage.Designer.cs">
-      <DependentUpon>201701270809525_AddDropscanMailingPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701270926186_BackgroundJobs.cs" />
-    <Compile Include="Migrations\201701270926186_BackgroundJobs.Designer.cs">
-      <DependentUpon>201701270926186_BackgroundJobs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701310825341_PagesMapping.cs" />
-    <Compile Include="Migrations\201701310825341_PagesMapping.Designer.cs">
-      <DependentUpon>201701310825341_PagesMapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701310845404_AllowDocumentsWithoutAllData.cs" />
-    <Compile Include="Migrations\201701310845404_AllowDocumentsWithoutAllData.Designer.cs">
-      <DependentUpon>201701310845404_AllowDocumentsWithoutAllData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701310846594_RequireDataOfDocumentItself.cs" />
-    <Compile Include="Migrations\201701310846594_RequireDataOfDocumentItself.Designer.cs">
-      <DependentUpon>201701310846594_RequireDataOfDocumentItself.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701311849587_AddMissingUniqueIndexes.cs" />
-    <Compile Include="Migrations\201701311849587_AddMissingUniqueIndexes.Designer.cs">
-      <DependentUpon>201701311849587_AddMissingUniqueIndexes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702011418300_AddMissingFks.cs" />
-    <Compile Include="Migrations\201702011418300_AddMissingFks.Designer.cs">
-      <DependentUpon>201702011418300_AddMissingFks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702020937317_AddDocumentIDToDropscanMailing.cs" />
-    <Compile Include="Migrations\201702020937317_AddDocumentIDToDropscanMailing.Designer.cs">
-      <DependentUpon>201702020937317_AddDocumentIDToDropscanMailing.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702021624353_FixDropscanMailingStatus.cs" />
-    <Compile Include="Migrations\201702021624353_FixDropscanMailingStatus.Designer.cs">
-      <DependentUpon>201702021624353_FixDropscanMailingStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707250755344_MoveBigDataToOwnTable.cs" />
-    <Compile Include="Migrations\201707250755344_MoveBigDataToOwnTable.Designer.cs">
-      <DependentUpon>201707250755344_MoveBigDataToOwnTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\QueryAsset.cs" />
-    <Compile Include="Queries\QueryDocumentFlags.cs" />
-    <Compile Include="Queries\QueryDocuments.cs" />
-    <Compile Include="Queries\QueryEntities.cs" />
-    <Compile Include="TypeConfigurationExtensions.cs" />
+    <ProjectReference Include="..\HAF.Domain\HAF.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701172227444_Initial.resx">
-      <DependentUpon>201701172227444_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701241525354_AddFolders.resx">
-      <DependentUpon>201701241525354_AddFolders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701241614029_ChangeStructure.resx">
-      <DependentUpon>201701241614029_ChangeStructure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701251052171_AddDropscanRecipient.resx">
-      <DependentUpon>201701251052171_AddDropscanRecipient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701260732193_AddFileExtensionForContext.resx">
-      <DependentUpon>201701260732193_AddFileExtensionForContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701260825437_AddFkPropertyAndRemoveUnnecessaryProperties.resx">
-      <DependentUpon>201701260825437_AddFkPropertyAndRemoveUnnecessaryProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701260847537_RenameProperty.resx">
-      <DependentUpon>201701260847537_RenameProperty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261731238_AddFlagsToDocument.resx">
-      <DependentUpon>201701261731238_AddFlagsToDocument.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261842108_ImproveFkColumnNames.resx">
-      <DependentUpon>201701261842108_ImproveFkColumnNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261902596_FixParentFolderFk.resx">
-      <DependentUpon>201701261902596_FixParentFolderFk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261906227_FixRecipientCompanyFk.resx">
-      <DependentUpon>201701261906227_FixRecipientCompanyFk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701270809525_AddDropscanMailingPage.resx">
-      <DependentUpon>201701270809525_AddDropscanMailingPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701270926186_BackgroundJobs.resx">
-      <DependentUpon>201701270926186_BackgroundJobs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701310825341_PagesMapping.resx">
-      <DependentUpon>201701310825341_PagesMapping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701310845404_AllowDocumentsWithoutAllData.resx">
-      <DependentUpon>201701310845404_AllowDocumentsWithoutAllData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701310846594_RequireDataOfDocumentItself.resx">
-      <DependentUpon>201701310846594_RequireDataOfDocumentItself.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701311849587_AddMissingUniqueIndexes.resx">
-      <DependentUpon>201701311849587_AddMissingUniqueIndexes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702011418300_AddMissingFks.resx">
-      <DependentUpon>201702011418300_AddMissingFks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702020937317_AddDocumentIDToDropscanMailing.resx">
-      <DependentUpon>201702020937317_AddDocumentIDToDropscanMailing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702021624353_FixDropscanMailingStatus.resx">
-      <DependentUpon>201702021624353_FixDropscanMailingStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707250755344_MoveBigDataToOwnTable.resx">
-      <DependentUpon>201707250755344_MoveBigDataToOwnTable.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Remove="Commands\DocumentsAndPagesCommands.cs" />
+    <Compile Remove="Commands\ImportMissingDocumentDataFromDiskCommand.cs" />
+    <Compile Remove="Commands\MapDropscanRecipientToCompanyCommand.cs" />
+    <Compile Remove="Commands\BackgroundJobCommands.cs" />
+    <Compile Remove="Commands\AddRecipientsCommand.cs" />
+    <Compile Remove="Commands\AddMailingsCommand.cs" />
+    <Compile Remove="Commands\AddFolderCommand.cs" />
+    <Compile Remove="Commands\AddDebitorCreditorCommand.cs" />
+    <Compile Remove="Commands\AddCompaniesCommand.cs" />
+    <Compile Remove="Queries\QueryBackgroundJobs.cs" />
+    <Compile Remove="Queries\QueryDebitorCreditors.cs" />
+    <Compile Remove="Queries\QueryDocumentFlags.cs" />
+    <Compile Remove="Queries\QueryCompanies.cs" />
+    <Compile Remove="Queries\QueryDocuments.cs" />
+    <Compile Remove="Queries\QueryDropscanMailingPageByPageNumber.cs" />
+    <Compile Remove="Queries\QueryDropscanMailingPages.cs" />
+    <Compile Remove="Queries\QueryDropscanMailings.cs" />
+    <Compile Remove="Queries\QueryFolders.cs" />
+    <Compile Remove="Queries\QueryKnownMailingsUuids.cs" />
+    <Compile Remove="Queries\CompanyAndDebitorCreditorOfFolder.cs" />
+    <Compile Remove="Commands\DeleteAssetCommand.cs" />
+    <Compile Remove="Commands\UpdateAssetCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HAF.Domain\HAF.Domain.csproj">
-      <Project>{b8aa608c-be7a-446b-9bb2-cc49d7913d2d}</Project>
-      <Name>HAF.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

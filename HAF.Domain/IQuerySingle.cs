@@ -1,7 +1,9 @@
-﻿namespace  HAF.Domain
+﻿using HAF.Domain.Entities;
+
+namespace  HAF.Domain
 {
-    public interface IQuerySingle<out TResult>
+    public interface IQuerySingle
     {
-        TResult Execute(int id);
+        Asset Execute(int id);
     }
 }

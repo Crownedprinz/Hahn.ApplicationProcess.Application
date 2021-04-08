@@ -5,30 +5,82 @@
     <h2>Add new asset</h2>
     <form action="" class="assets-form">
       <div class="assets-form-item">
-        <label for="firstName">First Name
-          <input type="text" class="form-control" id="firstName" value.bind="asset.firstName">
+        <label for="assetName"
+          >Asset Name
+          <input
+            type="text"
+            class="form-control"
+            id="assetName"
+            value.bind="assetHold.assetName"
+          />
         </label>
       </div>
       <div class="assets-form-item">
-        <label for="lastName">Last Name
-          <input type="text" class="form-control" id="lastName" value.bind="asset.lastName">
+        <label for="department"
+          >Department
+          <input
+            type="text"
+            class="form-control"
+            id="department"
+            value.bind="assetHold.department"
+          />
         </label>
       </div>
       <div class="assets-form-item">
-        <label for="email">Email
-          <input type="text" class="form-control" id="email" value.bind="asset.email">
+        <label for="countryOfDepartment"
+          >CountryOfDepartment
+          <input
+            type="text"
+            class="form-control"
+            id="countryOfDepartment"
+            value.bind="asset.countryOfDepartment"
+          />
         </label>
       </div>
       <div class="assets-form-item">
-        <label for="phone">Phone Number
-          <input type="text" class="form-control" id="phone" value.bind="asset.phoneNumber">
+        <label for="eMailAdressOfDepartment"
+          >EMailAdressOfDepartment
+          <input
+            type="text"
+            class="form-control"
+            id="eMailAdressOfDepartment"
+            value.bind="assetHold.eMailAdressOfDepartment"
+          />
+        </label>
+      </div>
+      <div class="assets-form-item">
+        <label for="purchaseDate"
+          >purchaseDate
+          <input
+            type="text"
+            class="form-control"
+            id="purchaseDate"
+            value.bind="assetHold.purchaseDate"
+          />
+        </label>
+      </div>
+      <div class="assets-form-item">
+        <label for="broken"
+          >broken
+          <input
+            type="text"
+            class="form-control"
+            id="broken"
+            value.bind="assetHold.broken"
+          />
         </label>
       </div>
       <div class="assets-button">
-        <button type="text" class="assets-save" click.delegate="create()">Create</button>
-        <button type="reset" class="assets-cancel"  click.delegate="reset()">Reset</button>
+        <button type="text" class="assets-save" click.delegate="create()">
+          Create
+        </button>
+        <button type="reset" class="assets-cancel" click.delegate="reset()">
+          Reset
+        </button>
       </div>
     </form>
   </div>
-  <a route-href="route: home;" class="assets-return"><i class="fas fa-chevron-left"></i> Home</a>
+  <a route-href="route: home;" class="assets-return"
+    ><i class="fas fa-chevron-left"></i> Home</a
+  >
 </template>

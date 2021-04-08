@@ -25,14 +25,14 @@ export class AssetDetail {
     this.routeConfig = routeConfig;
     return this._assetService.getAsset(params.id).then((asset) => {
       this.activeAsset = asset;
-      this.routeConfig.navModel.setTitle(this.activeAsset.firstName);
+      this.routeConfig.navModel.setTitle(this.activeAsset.assetName);
       this.originalAsset = asset;
       this.event.publish(new AssetViewed(this.activeAsset));
     });
   }
 
   get canSave() {
-    return this.activeAsset.firstName && this.activeAsset.lastName;
+    return this.activeAsset.assetName;
   }
 
   save() {
@@ -40,7 +40,7 @@ export class AssetDetail {
       .updateAsset(this.activeAsset.id, this.activeAsset)
       .then((asset) => {
         this.activeAsset = asset;
-        this.routeConfig.navModel.setTitle(this.activeAsset.firstName);
+        this.routeConfig.navModel.setTitle(this.activeAsset.assetName);
         this.originalAsset = asset;
         this.event.publish(new AssetUpdated(this.activeAsset));
         window.history.back();

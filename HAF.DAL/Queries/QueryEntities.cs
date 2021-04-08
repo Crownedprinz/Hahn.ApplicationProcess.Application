@@ -1,41 +1,34 @@
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using HAF.Domain;
 using HAF.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace  HAF.DAL.Queries
 {
-    public abstract class QueryEntities<TEntity> : IQueryAll<TEntity>, IQuerySingle<TEntity> where TEntity : Entity
+    
+    public class QueryEntities : IQueryAll
     {
-        public virtual IEnumerable<TEntity> Execute()
+        DbContextOptions<DatabaseContext> options = new DbContextOptionsBuilder<DatabaseContext>()
+           .UseInMemoryDatabase(databaseName: "Test")
+           .Options;
+        public IEnumerable<Asset> Execute()
         {
-            using (var context = new DatabaseContext())
+            using (var context = new DatabaseContext(options))
             {
-                var items = CreateQuery(context).AsNoTracking().AsEnumerable().Select(PostProcess).ToList();
-                Detach(context, items);
+                var items = context.Asset.ToList();
+                return items;
+         }
+    }
+
+
+        public Asset ExecuteOne(int id)
+        {
+            using (var context = new DatabaseContext(options))
+            {
+                var items = context.Asset.Where(x => x.ID == id).FirstOrDefault();
                 return items;
             }
-        }
-
-        public virtual TEntity Execute(int id)
-        {
-            using (var context = new DatabaseContext())
-            {
-                var result = CreateQuery(context).SingleOrDefault(x => x.ID == id);
-                if (result != null)
-                    result = PostProcess(result);
-                return result;
-            }
-        }
-
-        protected abstract IQueryable<TEntity> CreateQuery(DatabaseContext context);
-        protected virtual TEntity PostProcess(TEntity entity) => entity;
-
-        private static void Detach(DbContext context, IEnumerable<TEntity> items)
-        {
-            foreach (var item in items)
-                context.Entry(item).State = EntityState.Detached;
         }
     }
 }

@@ -1,134 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B8AA608C-BE7A-446B-9BB2-CC49D7913D2D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HAF.Domain</RootNamespace>
-    <AssemblyName>HAF.Domain</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.9.5.3\lib\net461\FluentValidation.dll</HintPath>
-    </Reference>
-    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.OracleClient" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Transactions" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <PackageReference Include="RestClient" Version="3.446.20952" />
+    <PackageReference Include="FluentValidation" Version="9.5.4" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="AutoMapper" Version="5.2.0" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.2" />
+    <PackageReference Include="Swagger.Net.Examples" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bucket.cs" />
-    <Compile Include="CommandParameters\AddAsset.cs" />
-    <Compile Include="CommandParameters\DeleteAsset.cs" />
-    <Compile Include="CommandParameters\UpdateAsset.cs" />
-    <Compile Include="CompositeShutDownHandler.cs" />
-    <Compile Include="CompositeStartUpHandler.cs" />
-    <Compile Include="Connectors\CountryApi.cs" />
-    <Compile Include="Cron.cs" />
-    <Compile Include="Direction.cs" />
-    <Compile Include="Entities\Asset.cs" />
-    <Compile Include="Entities\AssetData.cs" />
-    <Compile Include="Entities\Company.cs" />
-    <Compile Include="Entities\Country.cs" />
-    <Compile Include="Entities\DebitorCreditor.cs" />
-    <Compile Include="Entities\DepartmentStatus.cs" />
-    <Compile Include="Entities\Document.cs" />
-    <Compile Include="Entities\DocumentData.cs" />
-    <Compile Include="Entities\DocumentFlags.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\Folder.cs" />
-    <Compile Include="Entities\NamedEntity.cs" />
-    <Compile Include="EntityNotFoundException.cs" />
-    <Compile Include="ExpressionsHelper.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="IApplicationShutDownHandler.cs" />
-    <Compile Include="IApplicationStartUpHandler.cs" />
-    <Compile Include="IAssetService.cs" />
-    <Compile Include="IAutoMapperConfigurator.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="ICreateCommand.cs" />
-    <Compile Include="IDocumentConnector.cs" />
-    <Compile Include="IQuery.cs" />
-    <Compile Include="IQueryAll.cs" />
-    <Compile Include="IQueryParameters.cs" />
-    <Compile Include="IQuerySingle.cs" />
-    <Compile Include="IRecurringJobManager.cs" />
-    <Compile Include="NullRecurringJobManager.cs" />
-    <Compile Include="PathHelpers.cs" />
-    <Compile Include="PdfHelpers.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AssetService.cs" />
-    <Compile Include="Validators\AssetValidator.cs" />
-    <Compile Include="QueryParameters\QueryAssetWithData.cs" />
-    <Compile Include="QueryParameters\QueryDocumentWithData.cs" />
-    <Compile Include="Status.cs" />
+    <Folder Include="Resources\" />
+    <Folder Include="AutoMapper\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

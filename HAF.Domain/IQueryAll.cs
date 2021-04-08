@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using HAF.Domain.Entities;
 
-namespace  HAF.Domain
+namespace HAF.Domain
 {
-    public interface IQueryAll<out TResult>
+    public interface IQueryAll
     {
-        IEnumerable<TResult> Execute();
+        IEnumerable<Asset> Execute();
+        Asset ExecuteOne(int id);
     }
 }

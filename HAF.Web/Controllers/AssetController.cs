@@ -1,83 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
 using AutoMapper;
 using HAF.Domain;
 using HAF.Domain.CommandParameters;
 using HAF.Domain.Connectors;
 using HAF.Domain.Entities;
-using HAF.Domain.QueryParameters;
-using HAF.Domain.Services;
-using HAF.Web.Resources;
-using Newtonsoft.Json.Converters;
-using Swagger.Net.Examples;
+using HAF.Domain.Resources;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HAF.Web.Controllers
 {
-    [RoutePrefix(Globals.ApiRoutesPrefix + "asset")]
-    public class AssetController : ResourceApiController<Asset, Asset>
+    [ApiController]
+    [Route("[controller]")]
+    public class AssetController : ControllerBase
     {
-        private readonly ICommand<AddAsset> _addAsset;
-        private readonly ICommand<UpdateAsset> _updateAsset;
-        private readonly ICommand<DeleteAsset> _deleteAsset;
+        protected readonly IQueryAll _queryAll;
+        private readonly ICommand _command;
         private readonly IAssetService _assetService;
+        private readonly IMapper _mapper;
         public AssetController(
-            IQueryAll<Asset> queryAll,
-            IQuerySingle<Asset> querySingle,
+            IQueryAll queryAll,
             IAssetService assetService,
-            ICommand<AddAsset> addAsset,
-            ICommand<UpdateAsset> updateAsset,
-            ICommand<DeleteAsset> deleteAsset
-            )
-            : base(queryAll, querySingle)
+            ICommand command,
+            IMapper mapper)
         {
+            if (queryAll == null)
+                throw new ArgumentNullException(nameof(queryAll));
+            _queryAll = queryAll;
             _assetService = assetService;
-            _addAsset = addAsset;
-            _updateAsset = updateAsset;
-            _deleteAsset = deleteAsset;
+            _command = command;
+            _mapper = mapper;
         }
 
-
-
-    
-
-        [HttpPost]
-        [Route("")]
-        [SwaggerRequestExample(typeof(AddOrUpdateAssetResource), typeof(AssetExample), jsonConverter:typeof(StringEnumConverter))]
-        public IHttpActionResult Add([FromBody] AddOrUpdateAssetResource resource)
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            var result = Mapper.Map<AddOrUpdateAssetResource, Asset>(resource);
+            var entity = _queryAll.ExecuteOne(id);
+            if (entity == null)
+                return NotFound();
+            return Ok(ToResource(entity));
+        }
+
+        
+        [HttpGet]
+        public IEnumerable<Asset> Get() => _queryAll.Execute().Select(ToResource);
+
+
+
+        [HttpPost("")]
+        public IActionResult Add([FromBody] AddOrUpdateAssetResource resource)
+        {
+            var result = new Asset
+            {
+                AssetName = resource.AssetName,
+                broken = resource.broken,
+                CountryOfDepartment = resource.CountryOfDepartment,
+                Department = resource.Department,
+                EMailAdressOfDepartment = resource.EMailAdressOfDepartment,
+                PurchaseDate = resource.PurchaseDate,
+
+            };
             //validate object
             var validateResult = _assetService.validateAsset(result);
             if (!validateResult.flag)
             {
                 return BadRequest(validateResult.errors);
             }
-            _addAsset.Execute(new AddAsset(result));
+           _command.ExecuteAdd(result);
 
             return Created(result.ID.ToString(), ToResource(result));
         }
 
-       
-        [Route("countries")]
-        public IHttpActionResult GetCountries()
+
+        [HttpGet("countries")]
+        public IActionResult GetCountries()
         {
             var countries = CountryApi.GetCountries();
             if (countries == null)
                 return NotFound();
 
-            return Content(HttpStatusCode.OK, countries);
+            return Ok(countries);
         }
 
-        [HttpPut]
-        [Route("{id}")]
-        [SwaggerRequestExample(typeof(AddOrUpdateAssetResource), typeof(AssetExample), jsonConverter: typeof(StringEnumConverter))]
-        public IHttpActionResult Update(int id, [FromBody] AddOrUpdateAssetResource config)
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, [FromBody] AddOrUpdateAssetResource config)
         {
-            var result = Mapper.Map<AddOrUpdateAssetResource, Asset>(config);
+            var result = _mapper.Map<Asset>(config);
             //validate object
             var validateResult = _assetService.validateAsset(result);
             if (!validateResult.flag)
@@ -85,7 +94,7 @@ namespace HAF.Web.Controllers
                 return BadRequest(validateResult.errors);
             }
 
-            var asset = _querySingle.Execute(id);
+            var asset = _queryAll.ExecuteOne(id);
             if (asset == null)
                 return NotFound();
 
@@ -102,24 +111,24 @@ namespace HAF.Web.Controllers
             if (config.broken != asset.broken)
                 asset.broken = config.broken;
 
-            _updateAsset.Execute(new UpdateAsset(asset));
+            _command.ExecuteUpdate(asset);
 
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("{id}")]
-        public IHttpActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            var asset = _querySingle.Execute(id);
+            var asset = _queryAll.ExecuteOne(id);
             if (asset == null)
                 return NotFound();
-            _deleteAsset.Execute(new DeleteAsset(asset));
+            _command.ExecuteDelete(asset);
 
             return Ok();
         }
 
-        protected override object OrderByProperty(Asset entity) => entity.PurchaseDate;
-      
+
+        protected virtual Asset ToResource(Entity entity) => _mapper.Map<Asset>(entity);
     }
 }
+

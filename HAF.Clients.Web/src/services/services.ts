@@ -9,7 +9,7 @@ export class AssetService {
   assets = [];
 
   constructor(http: HttpClient) {
-    http.configure((x) => x.withBaseUrl(api.dev + "/asset/"));
+    http.configure((x) => x.withBaseUrl(api.dev + "Asset/"));
     this.http = http;
   }
 
@@ -19,9 +19,6 @@ export class AssetService {
         .get('')
         .then((data) => {
           this.assets = JSON.parse(data.response);
-          this.assets = JSON.parse(
-            '[{"firstName": "John", "id":1, "lastName": "Ademola", "email":"ademolajhon@gmail.com","phoneNumber":"08134734540"}]'
-          );
           resolve(this.assets);
         })
         .catch((err) => reject(err));
@@ -48,10 +45,6 @@ export class AssetService {
         .get(id)
         .then((response) => {
           let result = JSON.parse(response.response);
-          result = this.assets = JSON.parse(
-            '{"firstName": "John", "id":1, "lastName": "Ademola", "email":"ademolajhon@gmail.com","phoneNumber":"08134734540"}'
-          );
-    
           resolve(result);
         })
         .catch((err) => reject(err));
@@ -60,10 +53,12 @@ export class AssetService {
   }
 
   deleteAsset(id) {
+    alert(id);
     let promise = new Promise((resolve, reject) => {
       this.http
         .delete(id)
         .then((response) => {
+          alert(JSON.stringify(response));
           let result = JSON.parse(response.response);
           resolve(result);
         })

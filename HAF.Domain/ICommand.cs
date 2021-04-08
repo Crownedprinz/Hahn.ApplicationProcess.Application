@@ -1,7 +1,11 @@
-﻿namespace  HAF.Domain
+﻿using HAF.Domain.Entities;
+
+namespace  HAF.Domain
 {
-    public interface ICommand<in TParameters>
+    public interface ICommand
     {
-        void Execute(TParameters parameters);
+        void ExecuteAdd(Asset asset);
+        void ExecuteUpdate(Asset asset);
+        void ExecuteDelete(Asset asset);
     }
 }

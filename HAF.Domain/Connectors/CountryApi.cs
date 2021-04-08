@@ -12,7 +12,7 @@ namespace HAF.Domain.Connectors
 {
     public static class CountryApi
     {
-        private static readonly RestClient _client = new RestClient(ConfigurationManager.AppSettings["CountryUrl"]);
+        private static readonly RestClient _client = new RestClient("https://restcountries.eu/");
 
         public static IEnumerable<Country> GetCountries()
         {

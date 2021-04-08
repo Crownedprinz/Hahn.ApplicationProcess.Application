@@ -1,4 +1,4 @@
 export default {
-  dev: "https://localhost:44350",
+  dev: "https://localhost:63767/",
   prod: "",
 };
