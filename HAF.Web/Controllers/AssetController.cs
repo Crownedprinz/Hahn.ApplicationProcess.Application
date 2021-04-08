@@ -10,6 +10,7 @@ using HAF.Domain.Resources;
 using HAF.Domain.QueryParameters;
 using HAF.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.Examples;
 
 namespace HAF.Web.Controllers
 {
@@ -51,6 +52,7 @@ namespace HAF.Web.Controllers
 
 
         [HttpPost("")]
+        [SwaggerRequestExample(typeof(AssetExample), typeof(AssetExample))]
         public IActionResult Add([FromBody] AddOrUpdateAssetResource resource)
         {
             var result = new Asset

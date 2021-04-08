@@ -48,7 +48,7 @@ namespace HAF.Web
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HAF.Web", Version = "v1" });
-                c.DescribeAllEnumsAsStrings();
+                //c.DescribeAllEnumsAsStrings();
             });
         }
 

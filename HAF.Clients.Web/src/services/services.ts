@@ -31,7 +31,9 @@ export class AssetService {
       this.http
         .post("", asset)
         .then((data) => {
+           //console.log('response from create',JSON.stringify(data.response));
           let result = JSON.parse(data.response);
+            //console.log("response from jsojn object", JSON.stringify(result));
           resolve(result);
         })
         .catch((err) => reject(err));

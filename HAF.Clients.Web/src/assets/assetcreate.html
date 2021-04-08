@@ -15,15 +15,24 @@
           />
         </label>
       </div>
+
+      
       <div class="assets-form-item">
-        <label for="department"
-          >Department
-          <input
+        <label for="department">Department
+          <!-- <input
             type="text"
             class="form-control"
             id="department"
             value.bind="assetHold.department"
-          />
+          /> -->
+            <select  class="form-control" id="department" value.bind="assetHold.department" >
+           
+            <option value="0">HQ</option>
+            <option value="1">Store1</option>
+            <option value="2">Store2</option>
+            <option value="3">Store3</option>
+            <option value="4">MaintenanceStation</option>
+          </select>
         </label>
       </div>
       <div class="assets-form-item">
@@ -52,6 +61,7 @@
         <label for="purchaseDate"
           >purchaseDate
           <input
+            placeholder="yyyy-MM-dd"
             type="text"
             class="form-control"
             id="purchaseDate"
@@ -72,7 +82,7 @@
       </div>
       <div class="assets-button">
         <button type="text" class="assets-save" click.delegate="create()">
-          Create
+          Send
         </button>
         <button type="reset" class="assets-cancel" click.delegate="reset()">
           Reset

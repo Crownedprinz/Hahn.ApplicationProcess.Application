@@ -44,6 +44,10 @@ export class AssetDetail {
         this.originalAsset = asset;
         this.event.publish(new AssetUpdated(this.activeAsset));
         window.history.back();
+      })
+      .catch((err) => {
+        let error = JSON.parse(err.response);
+        alert(JSON.stringify(error.errors));
       });
   }
 

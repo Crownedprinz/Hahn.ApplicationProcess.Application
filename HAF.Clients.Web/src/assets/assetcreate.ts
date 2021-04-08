@@ -10,13 +10,14 @@ import { Router } from "aurelia-router";
 export class AssetCreate {
   private _assetService;
   private _ea;
+  countries: any[];
   assetHold = {
     assetName: "",
     department: "",
     eMailAdressOfDepartment: "",
     countryOfDepartment: "",
     phone: "",
-    broken: ""
+    broken: "",
   };
   router: Router;
 
@@ -24,20 +25,30 @@ export class AssetCreate {
     this._assetService = assetService;
     this._ea = ea;
     this.router = router;
+    this.countries = [];
+  }
+
+  getCountries() {
+    this._assetService
+      .getCountries()
+      .then((data) => (this.countries = data))
+      .catch((err) => console.log(err));
   }
 
   create() {
     let asset = JSON.parse(JSON.stringify(this.assetHold));
-    alert(JSON.stringify(this.assetHold));
     if (asset.email === "") {
       return alert("You need to add information to your contact.");
     } else {
       this._assetService
-        .createContact(asset)
-        .then((asset) => {
-          this._ea.publish(new AssetCreated(asset));
+        .createAsset(asset)
+        .then((result) => {
+          this._ea.publish(new AssetCreated(result));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          let error = JSON.parse(err.response);
+          alert(JSON.stringify(error.errors));
+        });
       this.router.navigateToRoute("assets");
     }
   }
